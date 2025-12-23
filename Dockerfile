@@ -1,18 +1,25 @@
-FROM eclipse-temurin:21-jdk
-
+# ----------- BUILD STAGE -----------
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
 
-# Copy Maven wrapper & project files
+# Copy everything
 COPY . .
 
 # Give execute permission to mvnw
 RUN chmod +x mvnw
 
-# Build the Spring Boot jar
+# Build the jar
 RUN ./mvnw clean package -DskipTests
 
-# Expose Spring Boot port
+# ----------- RUN STAGE -----------
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+
+# Copy jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Render uses PORT env variable
 EXPOSE 8080
 
-# Run the generated jar (Spring Boot default name)
-CMD ["java", "-jar", "target/vsketch-0.0.1-SNAPSHOT.jar"]
+# Start the app
+CMD ["java", "-jar", "app.jar"]
