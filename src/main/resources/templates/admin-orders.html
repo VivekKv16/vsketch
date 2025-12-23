@@ -17,7 +17,7 @@
 
     <h3 class="section-title">Customer Orders</h3>
 
-    <table class="admin-table">
+    <table>
         <thead>
         <tr>
             <th>ID</th>
@@ -34,67 +34,35 @@
         </tr>
         </thead>
 
-
         <tbody>
         <tr th:each="order : ${orders}">
-
             <td th:text="${order.id}"></td>
             <td th:text="${order.name}"></td>
             <td th:text="${order.email}"></td>
             <td th:text="${order.phone}"></td>
             <td th:text="${order.type}"></td>
 
-            <!-- ORIGINAL IMAGE -->
-            <td class="image-cell">
-                <img th:if="${order.imageUrl != null}"
-                     th:src="${order.imageUrl}"
-                     width="100"/>
-                <span th:if="${order.imageUrl == null}">N/A</span>
+            <td>
+                <img th:src="${order.imageUrl}" width="80">
             </td>
 
-            <!-- IMAGE URL -->
-            <td class="url-cell">
-                <a th:if="${order.imageUrl != null}"
-                   th:href="${order.imageUrl}"
-                   target="_blank">
-                    View Image
-                </a>
-                <span th:if="${order.imageUrl == null}">N/A</span>
+            <td>
+                <a th:href="${order.imageUrl}" target="_blank">View Image</a>
             </td>
 
-            <!-- COMPLETED SKETCH -->
-            <td class="completed-cell">
-
-                <!-- Upload form (only if not uploaded yet) -->
-                <form th:if="${order.completedImageUrl == null}"
-                      th:action="@{/admin/upload-completed/{id}(id=${order.id})}"
-                      method="post"
-                      enctype="multipart/form-data">
-
+            <td>
+                <form th:action="@{/admin/upload-completed/{id}(id=${order.id})}"
+                      method="post" enctype="multipart/form-data">
                     <input type="file" name="completedPhoto" required>
                     <button type="submit">Upload</button>
                 </form>
-
-                <!-- View completed sketch -->
-                <a th:if="${order.completedImageUrl != null}"
-                   th:href="${order.completedImageUrl}"
-                   target="_blank">
-                    View Completed
-                </a>
-
             </td>
 
-            <!-- AMOUNT -->
             <td>₹ <span th:text="${order.amount}"></span></td>
 
-            <!-- STATUS -->
-            <td>
-        <span th:text="${order.status}"
-              th:classappend="${order.status == 'PAID'} ? 'paid' : 'pending'">
-        </span>
-            </td>
+            <td th:text="${order.status}"></td>
 
-            <!-- ACTION -->
+            <!-- ✅ FIXED MARK PAID ALIGNMENT -->
             <td>
                 <form th:action="@{/admin/mark-paid/{id}(id=${order.id})}"
                       method="post"
@@ -102,12 +70,8 @@
                     <button type="submit">Mark Paid</button>
                 </form>
             </td>
-
-
         </tr>
-
         </tbody>
-
     </table>
 
 </div>
