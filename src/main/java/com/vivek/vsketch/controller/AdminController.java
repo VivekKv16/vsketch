@@ -1,5 +1,6 @@
 package com.vivek.vsketch.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.vivek.vsketch.model.Order;
@@ -28,6 +29,13 @@ public class AdminController {
     @Autowired
     private EmailService emailService;
 
+    @Value("${admin.username}")
+    private String adminUsername;
+
+    @Value("${admin.password}")
+    private String adminPassword;
+
+
     // ================= LOGIN =================
 
     @GetMapping("/login")
@@ -41,10 +49,11 @@ public class AdminController {
             @RequestParam String password,
             HttpSession session
     ) {
-        if ("vivek".equals(username) && "vsketch123".equals(password)) {
+        if (adminUsername.equals(username) && adminPassword.equals(password)) {
             session.setAttribute("admin", true);
             return "redirect:/admin/orders";
         }
+
         return "redirect:/admin/login?error";
     }
 
