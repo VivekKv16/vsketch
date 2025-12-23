@@ -4,11 +4,14 @@ WORKDIR /app
 
 COPY . .
 
-# ✅ FIX: give execute permission to mvnw
+# Make mvnw executable (VERY IMPORTANT)
 RUN chmod +x mvnw
 
+# Build the app
 RUN ./mvnw clean package -DskipTests
 
+# Expose Spring Boot port
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/*.jar"]
+# Run the generated jar (CORRECT WAY)
+CMD ["sh", "-c", "java -jar target/*.jar"]
