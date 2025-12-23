@@ -95,14 +95,10 @@
             </td>
 
             <!-- ACTION -->
-            <td class="action-cell">
-                <a th:if="${order.status != 'PAID'}"
-                   th:href="@{/admin/mark-paid/{id}(id=${order.id})}"
-                   class="mark-btn">
-                    Mark Paid
-                </a>
-                <span th:if="${order.status == 'PAID'}">✔</span>
-            </td>
+            <form th:action="@{/admin/mark-paid/{id}(id=${order.id})}" method="post">
+                <button type="submit">Mark Paid</button>
+            </form>
+
 
         </tr>
 

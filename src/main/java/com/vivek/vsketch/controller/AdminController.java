@@ -62,6 +62,27 @@ public class AdminController {
         return "admin-orders";
     }
 
+    // ================= MARK PAID (✅ ADDED HERE) =================
+
+    @PostMapping("/mark-paid/{id}")
+    public String markPaid(
+            @PathVariable Long id,
+            HttpSession session
+    ) {
+
+        if (session.getAttribute("admin") == null) {
+            return "redirect:/admin/login";
+        }
+
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        order.setStatus("PAID");
+        orderRepository.save(order);
+
+        return "redirect:/admin/orders";
+    }
+
     // ================= UPLOAD COMPLETED SKETCH =================
 
     @PostMapping("/upload-completed/{id}")

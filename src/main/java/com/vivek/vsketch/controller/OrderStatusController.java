@@ -16,7 +16,9 @@ public class OrderStatusController {
 
     @GetMapping("/order-status/{id}")
     public String orderStatus(@PathVariable Long id, Model model) {
-        Order order = orderRepository.findById(id).orElseThrow();
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
         model.addAttribute("order", order);
         return "order-status";
     }
