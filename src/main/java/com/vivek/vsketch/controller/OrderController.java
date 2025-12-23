@@ -84,9 +84,9 @@ public class OrderController {
                     imageUrl
             );
         } catch (Exception e) {
-            // DO NOTHING — just log
-            System.out.println("Email failed (Render SMTP blocked)");
+            System.out.println("Email failure ignored");
         }
+
 
 
 

@@ -11,7 +11,6 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    // EXISTING METHOD (KEEP THIS)
     public void sendOrderMail(
             String to,
             String name,
@@ -23,10 +22,8 @@ public class EmailService {
     ) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-
             message.setTo(to);
             message.setSubject("📸 New Sketch Order Received - VSketch");
-
             message.setText(
                     "New Order Received\n\n" +
                             "Name: " + name + "\n" +
@@ -35,19 +32,17 @@ public class EmailService {
                             "Sketch Type: " + type + "\n" +
                             "Amount: ₹" + amount + "\n" +
                             "Image: " + imageName + "\n" +
-                            "Status: PENDING\n\n" +
-                            "Login to Admin Panel to view details."
+                            "Status: PENDING"
             );
 
             mailSender.send(message);
 
         } catch (Exception e) {
-            System.out.println("Email sending failed: " + e.getMessage());
+            // 🔥 DO NOT THROW
+            // 🔥 DO NOT RE-THROW
+            System.out.println("Email skipped (SMTP blocked on Render)");
         }
     }
-
-
-    // ⭐ NEW METHOD – CUSTOMER COMPLETION MAIL
     public void sendCompletedOrderMail(
             String toEmail,
             String customerName,
@@ -72,3 +67,5 @@ public class EmailService {
         mailSender.send(message);
     }
 }
+
+
