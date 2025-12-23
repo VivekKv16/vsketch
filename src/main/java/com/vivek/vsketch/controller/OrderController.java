@@ -73,15 +73,20 @@ public class OrderController {
         orderRepository.save(order);
 
         // 3️⃣ Send email to admin
-        emailService.sendOrderMail(
-                "yourgmail@gmail.com",   // admin email
-                name,
-                email,
-                phone,
-                type,
-                500.0,
-                imageUrl
-        );
+        try {
+            emailService.sendOrderMail(
+                    "yourgmail@gmail.com",
+                    name,
+                    email,
+                    phone,
+                    type,
+                    500.0,
+                    imageUrl
+            );
+        } catch (Exception e) {
+            System.out.println("Email failed, but order saved: " + e.getMessage());
+        }
+
 
         // 4️⃣ Success page data
         redirectAttributes.addFlashAttribute("imageUrl", imageUrl);

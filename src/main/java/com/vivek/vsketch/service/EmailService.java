@@ -21,25 +21,31 @@ public class EmailService {
             double amount,
             String imageName
     ) {
-        SimpleMailMessage message = new SimpleMailMessage();
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setTo(to);
-        message.setSubject("📸 New Sketch Order Received - VSketch");
+            message.setTo(to);
+            message.setSubject("📸 New Sketch Order Received - VSketch");
 
-        message.setText(
-                "New Order Received\n\n" +
-                        "Name: " + name + "\n" +
-                        "Email: " + email + "\n" +
-                        "Phone: " + phone + "\n" +
-                        "Sketch Type: " + type + "\n" +
-                        "Amount: ₹" + amount + "\n" +
-                        "Image: " + imageName + "\n" +
-                        "Status: PENDING\n\n" +
-                        "Login to Admin Panel to view details."
-        );
+            message.setText(
+                    "New Order Received\n\n" +
+                            "Name: " + name + "\n" +
+                            "Email: " + email + "\n" +
+                            "Phone: " + phone + "\n" +
+                            "Sketch Type: " + type + "\n" +
+                            "Amount: ₹" + amount + "\n" +
+                            "Image: " + imageName + "\n" +
+                            "Status: PENDING\n\n" +
+                            "Login to Admin Panel to view details."
+            );
 
-        mailSender.send(message);
+            mailSender.send(message);
+
+        } catch (Exception e) {
+            System.out.println("Email sending failed: " + e.getMessage());
+        }
     }
+
 
     // ⭐ NEW METHOD – CUSTOMER COMPLETION MAIL
     public void sendCompletedOrderMail(
