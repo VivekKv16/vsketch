@@ -84,8 +84,10 @@ public class OrderController {
                     imageUrl
             );
         } catch (Exception e) {
-            System.out.println("Email failed, but order saved: " + e.getMessage());
+            // DO NOTHING — just log
+            System.out.println("Email failed (Render SMTP blocked)");
         }
+
 
 
         // 4️⃣ Success page data
