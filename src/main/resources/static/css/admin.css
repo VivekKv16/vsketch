@@ -317,5 +317,13 @@ body {
     border-radius: 8px;
     border: 1px solid #ccc;
 }
+td form {
+    margin: 0;
+}
+
+button {
+    padding: 6px 10px;
+    cursor: pointer;
+}
 
 

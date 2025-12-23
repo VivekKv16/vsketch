@@ -95,9 +95,13 @@
             </td>
 
             <!-- ACTION -->
-            <form th:action="@{/admin/mark-paid/{id}(id=${order.id})}" method="post">
-                <button type="submit">Mark Paid</button>
-            </form>
+            <td>
+                <form th:action="@{/admin/mark-paid/{id}(id=${order.id})}"
+                      method="post"
+                      th:if="${order.status != 'PAID'}">
+                    <button type="submit">Mark Paid</button>
+                </form>
+            </td>
 
 
         </tr>
