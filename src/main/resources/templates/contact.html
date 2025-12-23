@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | VSketch</title>
+    <link rel="stylesheet" th:href="@{/css/contact.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: body}"></div>
+
+<section class="contact-wrapper">
+
+    <div class="contact-card">
+        <h2>📩 Contact VSketch</h2>
+        <p class="contact-subtitle">
+            Feel free to reach out for custom sketches & commissions 🎨
+        </p>
+
+        <div class="contact-actions">
+            <a href="mailto:vsketchacharya@gmail.com" class="contact-btn email">
+                ✉️ Email Me
+            </a>
+
+            <a href="https://www.instagram.com/vivekacharya_art"
+               target="_blank"
+               rel="noopener"
+               class="contact-btn insta">
+                📸 Instagram
+            </a>
+        </div>
+    </div>
+
+    <!-- DRAWING SHOWCASE -->
+    <div class="contact-gallery">
+        <img src="/images/drawings/sketch1.jpeg" alt="Sketch 1">
+        <img src="/images/drawings/sketch7.jpeg" alt="Sketch 2">
+        <img src="/images/drawings/sketch12.jpeg" alt="Sketch 3">
+    </div>
+
+</section>
+
+</body>
+</html>

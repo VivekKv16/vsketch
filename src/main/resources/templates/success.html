@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Successful | VSketch</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="success-bg">
+
+<div class="success-container">
+    <h1>🎉 Order Submitted Successfully!</h1>
+
+    <div class="success-card">
+        <p><b>Amount to Pay:</b> ₹ <span th:text="${amount}"></span></p>
+        <p>
+            <b>Status:</b>
+            <span class="status pending" th:text="${status}"></span>
+        </p>
+
+        <h3>Your Uploaded Image</h3>
+        <img th:src="${imageUrl}"
+             alt="Uploaded Sketch"
+             class="preview-img"/>
+
+        <h3>Scan QR to Pay</h3>
+        <div class="qr-box">
+            <img class="qr-img" src="/images/upi-qr.jpeg" alt="UPI QR Code"/>
+        </div>
+
+        <a href="/" class="btn">Go Back Home</a>
+    </div>
+</div>
+</body>
+</html>

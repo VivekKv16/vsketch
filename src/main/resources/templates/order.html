@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Sketch | VSketch</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="order-page">
+
+<!-- NAVBAR -->
+<div th:replace="~{fragments/navbar :: body}"></div>
+
+<div class="order-container">
+
+    <!-- LEFT: FORM -->
+    <div class="order-card">
+        <h2>🎨 Order Your Sketch</h2>
+        <p class="subtitle">Turn your photo into beautiful hand-drawn art</p>
+
+        <form th:action="@{/order}" method="post" enctype="multipart/form-data">
+
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Your email" required>
+
+            <!-- ✅ PHONE NUMBER -->
+            <label>Phone Number</label>
+            <input type="tel"
+                   name="phone"
+                   placeholder="Your phone number"
+                   required
+                   pattern="[0-9]{10}"
+                   title="Enter 10-digit phone number">
+
+            <label>Sketch Type</label>
+            <select name="type" required>
+                <option value="Pencil Sketch">Pencil Sketch</option>
+                <option value="Charcoal Sketch">Charcoal Sketch</option>
+            </select>
+
+            <label>Upload Photo</label>
+            <input type="file" name="photo" required>
+
+            <button type="submit" class="btn">Submit Order</button>
+        </form>
+    </div>
+
+    <!-- RIGHT: ART PREVIEW -->
+    <div class="order-preview">
+        <h3>✨ My Recent Works</h3>
+        <div class="preview-grid">
+            <img src="/images/drawings/sketch4.jpeg">
+            <img src="/images/drawings/sketch14.jpeg">
+            <img src="/images/drawings/sketch1.jpeg">
+            <img src="/images/drawings/sketch16.jpeg">
+        </div>
+        <p class="note">Your sketch will look this realistic 👆</p>
+    </div>
+
+</div>
+
+</body>
+</html>

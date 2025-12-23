@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | VSketch</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body class="admin-login-body">
+
+<div class="login-box">
+
+    <div class="logo">VSketch</div>
+
+    <form action="/admin/login" method="post">
+
+        <input type="text" name="username" placeholder="Username" required>
+
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <p class="error" th:if="${param.error}">
+        Invalid credentials
+    </p>
+
+</div>
+
+</body>
+</html>

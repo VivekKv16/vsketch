@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews | VSketch</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: body}"></div>
+
+<section class="gallery-preview">
+    <h2>Completed Sketches & Reviews ⭐</h2>
+
+    <div class="grid">
+        <div class="gallery-card" th:each="order : ${completedOrders}">
+            <img th:src="${order.completedImageUrl}" alt="Completed Sketch">
+
+            <div class="overlay">
+                <p th:text="${order.review}"></p>
+                <p>⭐ <span th:text="${order.rating}"></span>/5</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

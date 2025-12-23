@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin | VSketch</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div class="admin-container">
+
+    <header class="admin-header">
+        <h2>Admin Dashboard</h2>
+        <a href="/admin/logout" class="logout-btn">Logout</a>
+    </header>
+
+    <h3 class="section-title">Customer Orders</h3>
+
+    <table class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Type</th>
+            <th>Image</th>
+            <th>Image URL</th>
+            <th>Completed Sketch</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        <tr th:each="order : ${orders}">
+
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.name}"></td>
+            <td th:text="${order.email}"></td>
+            <td th:text="${order.phone}"></td>
+            <td th:text="${order.type}"></td>
+
+            <!-- ORIGINAL IMAGE -->
+            <td class="image-cell">
+                <img th:if="${order.imageUrl != null}"
+                     th:src="${order.imageUrl}"
+                     width="100"/>
+                <span th:if="${order.imageUrl == null}">N/A</span>
+            </td>
+
+            <!-- IMAGE URL -->
+            <td class="url-cell">
+                <a th:if="${order.imageUrl != null}"
+                   th:href="${order.imageUrl}"
+                   target="_blank">
+                    View Image
+                </a>
+                <span th:if="${order.imageUrl == null}">N/A</span>
+            </td>
+
+            <!-- COMPLETED SKETCH -->
+            <td class="completed-cell">
+
+                <!-- Upload form (only if not uploaded yet) -->
+                <form th:if="${order.completedImageUrl == null}"
+                      th:action="@{/admin/upload-completed/{id}(id=${order.id})}"
+                      method="post"
+                      enctype="multipart/form-data">
+
+                    <input type="file" name="completedPhoto" required>
+                    <button type="submit">Upload</button>
+                </form>
+
+                <!-- View completed sketch -->
+                <a th:if="${order.completedImageUrl != null}"
+                   th:href="${order.completedImageUrl}"
+                   target="_blank">
+                    View Completed
+                </a>
+
+            </td>
+
+            <!-- AMOUNT -->
+            <td>₹ <span th:text="${order.amount}"></span></td>
+
+            <!-- STATUS -->
+            <td>
+        <span th:text="${order.status}"
+              th:classappend="${order.status == 'PAID'} ? 'paid' : 'pending'">
+        </span>
+            </td>
+
+            <!-- ACTION -->
+            <td class="action-cell">
+                <a th:if="${order.status != 'PAID'}"
+                   th:href="@{/admin/mark-paid/{id}(id=${order.id})}"
+                   class="mark-btn">
+                    Mark Paid
+                </a>
+                <span th:if="${order.status == 'PAID'}">✔</span>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+//* =========================
+    CONTACT PAGE
+ ========================= */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+}
+ .contact-wrapper {
+     padding: 60px 20px;
+     max-width: 1100px;
+     margin: auto;
+     text-align: center;
+ }
+
+ .contact-card {
+     background: white;
+     padding: 40px 30px;
+     border-radius: 16px;
+     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+     margin-bottom: 40px;
+ }
+
+ .contact-card h2 {
+     font-size: 32px;
+     margin-bottom: 10px;
+ }
+
+ .contact-subtitle {
+     color: #555;
+     margin-bottom: 25px;
+     font-size: 16px;
+ }
+
+ .contact-actions {
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     flex-wrap: wrap;
+ }
+
+ .contact-btn {
+     padding: 12px 26px;
+     border-radius: 30px;
+     text-decoration: none;
+     font-weight: 600;
+     transition: 0.3s;
+     display: inline-block;
+ }
+
+ .contact-btn.email {
+     background: #111;
+     color: white;
+ }
+
+ .contact-btn.insta {
+     background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+     color: white;
+ }
+
+ .contact-btn:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+ }
+
+ /* DRAWING IMAGES */
+ .contact-gallery {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+     gap: 25px;
+     margin-top: 20px;
+ }
+
+ .contact-gallery img {
+     width: 100%;
+     border-radius: 14px;
+     box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+     transition: 0.4s;
+ }
+
+ .contact-gallery img:hover {
+     transform: scale(1.05);
+ }
+
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: "Segoe UI", Arial, sans-serif;
+     background: linear-gradient(135deg, #f8f9ff, #eef1ff);
+     color: #333;
+     line-height: 1.6;
+ }
+
+ /* =========================
+    NAVBAR
+ ========================= */
+ nav {
+     background: linear-gradient(90deg, rgba(20,20,20,0.9), rgba(45,45,45,0.9));
+     backdrop-filter: blur(10px);
+     padding: 15px 40px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: sticky;
+     top: 0;
+     z-index: 1000;
+ }
+
+ nav h2 {
+     font-size: 26px;
+     font-weight: bold;
+     background: linear-gradient(45deg, #ffcc00, #ff9800);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ }
+
+ nav a {
+     color: #ddd;
+     margin-left: 20px;
+     text-decoration: none;
+     position: relative;
+     transition: 0.3s;
+ }
+
+ nav a::after {
+     content: "";
+     position: absolute;
+     width: 0;
+     height: 2px;
+     background: #ffcc00;
+     left: 0;
+     bottom: -6px;
+     transition: 0.3s;
+ }
+
+ nav a:hover {
+     color: #ffcc00;
+ }
+
+ nav a:hover::after {
+     width: 100%;
+ }
+@media (max-width: 768px) {
+
+    .contact-section {
+        padding: 20px;
+    }
+
+    .contact-card {
+        padding: 25px 20px;
+        text-align: center;
+    }
+
+    .contact-card h2 {
+        font-size: 22px;
+    }
+
+    .contact-card p {
+        font-size: 14px;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .contact-actions a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .contact-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-card {
+        max-width: 90%;
+        margin: auto;
+    }
+}
+

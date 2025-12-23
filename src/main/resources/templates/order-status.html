@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="order-status-card">
+
+    <h2>Your Sketch is Ready 🎉</h2>
+
+    <img th:if="${order.completedImageUrl != null}"
+         th:src="${order.completedImageUrl}"
+         class="completed-img"/>
+
+    <p th:if="${order.completedImageUrl == null}">
+        Your sketch is still in progress ⏳
+    </p>
+
+    <a th:if="${order.completedImageUrl != null}"
+       th:href="@{/review/{id}(id=${order.id})}"
+       class="btn">
+        Leave a Review ⭐
+    </a>
+
+</div>
+
+</body>
+</html>

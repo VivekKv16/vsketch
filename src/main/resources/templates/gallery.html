@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | VSketch</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: body}"></div>
+
+<center><h2 class="center">My Drawings</h2></center>
+<section class="gallery-preview">
+
+
+    <div class="grid">
+
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch1.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch2.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch3.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+
+
+
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch4.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch5.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch6.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch7.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch8.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch9.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch10.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch11.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch12.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch13.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch14.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch15.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch16.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch17.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch18.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch19.jpeg">
+            <div class="overlay">View Artwork</div>
+        </div>
+
+
+            <div class="gallery-card" th:each="img : ${images}">
+                <img th:src="@{'/uploads/' + ${img.imageName}}">
+                <div class="overlay">View Artwork</div>
+            </div>
+        </div>
+
+
+
+
+
+
+</section>
+
+
+</body>
+</html>

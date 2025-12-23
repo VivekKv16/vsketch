@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSketch | Pencil Portraits</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: body}"></div>
+
+<!-- HERO -->
+<section class="hero hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>VSketch 🎨</h1>
+        <p>Turn your memories into hand-drawn pencil art</p>
+        <a th:href="@{/order}" class="btn">Order Your Sketch</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <h2>About Me</h2>
+    <p>
+        I create realistic hand-drawn pencil sketches from your photos.
+        Delivery within 5–10 days. Custom sizes available.
+    </p>
+</section>
+
+<!-- STATIC WORKS -->
+<section class="gallery-preview">
+    <center><h2>My Works</h2></center>
+    <div class="grid">
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch13.jpeg">
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch17.jpeg">
+        </div>
+        <div class="gallery-card">
+            <img src="/images/drawings/sketch19.jpeg">
+        </div>
+    </div>
+
+    <center><a th:href="@{/gallery}" class="btn-outline">View All</a></center>
+</section>
+
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
