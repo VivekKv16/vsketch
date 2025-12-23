@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
 @Service
 public class EmailService {
 
@@ -38,34 +37,36 @@ public class EmailService {
             mailSender.send(message);
 
         } catch (Exception e) {
-            // 🔥 DO NOT THROW
-            // 🔥 DO NOT RE-THROW
-            System.out.println("Email skipped (SMTP blocked on Render)");
+            System.out.println("Order email skipped (SMTP blocked on Render)");
         }
     }
+
+    // ✅ FIXED
     public void sendCompletedOrderMail(
             String toEmail,
             String customerName,
             String completedImageUrl,
             Long orderId
     ) {
-        SimpleMailMessage message = new SimpleMailMessage();
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(toEmail);
+            message.setSubject("🎉 Your Sketch is Ready | VSketch");
 
-        message.setTo(toEmail);
-        message.setSubject("🎉 Your Sketch is Ready | VSketch");
+            message.setText(
+                    "Hi " + customerName + ",\n\n" +
+                            "Great news! Your sketch is completed 🎨✨\n\n" +
+                            "View your completed sketch here:\n" +
+                            completedImageUrl + "\n\n" +
+                            "Please share your feedback:\n" +
+                            "https://vsketch.onrender.com/review/" + orderId + "\n\n" +
+                            "Thank you for choosing VSketch ❤️"
+            );
 
-        message.setText(
-                "Hi " + customerName + ",\n\n" +
-                        "Great news! Your sketch is completed 🎨✨\n\n" +
-                        "View your completed sketch here:\n" +
-                        completedImageUrl + "\n\n" +
-                        "Please share your feedback:\n" +
-                        "http://localhost:8080/review/" + orderId + "\n\n" +
-                        "Thank you for choosing VSketch ❤️"
-        );
+            mailSender.send(message);
 
-        mailSender.send(message);
+        } catch (Exception e) {
+            System.out.println("Completion email skipped (SMTP blocked on Render)");
+        }
     }
 }
-
-
